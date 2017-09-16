@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>Growl</title>
+          <link rel='stylesheet' href='/stylesheets/main.css'>
+     </head>
+     <body>
+
+          <h1><u>GROWL</u></h1>
+
+          <div id="bio">
+          GROWL is designed to help students determine how much they should spend per meal
+               with the remaining dollars on their LION meal plan. It is not associated with Loyola Marymount
+               University. This web-app is currently functional only for the Fall 2017 semester, and assumes that
+               students will be on campus until the last day of finals (December 15th, 2017).
+               <br>
+               <div id="comtom">*Community table is also known as ComTom.</div>
+
+          </div>
+
+          <form id="growl" method="post" class="form">
+
+          <div id="mealPlan">
+          <h2>Which meal plan do you have?</h2>
+                      <p><select form_id='growl' id='plan' class='dropdown' name='plan'>
+                          <option id='text' value='L'>L</option>
+                          <option id='text' value='I'>I</option>
+                          <option id='text' value='O'>O</option>
+                          <option id='text' value='N'>N</option>
+                        </p>
+                       </select>
+               </div>
+
+          <!-- <div id="weekends">
+          <h2>Are you on-campus for weekends?</h2>
+                 <p><select form_id='growl' id='weekends' class='dropdown' name='weekends'>
+                     <option id='text' value='Yes' selected>Yes</option>
+                     <option id='text' value='No'>No</option>
+                   </p>
+                  </select>
+          </div>
+
+          <div id="autumnDay">
+          <h2>Will you be on-campus during the Autumn Day weekend (October 13th-15th)?</h2>
+                 <p><select form_id='growl' id='autumnDay' class='dropdown' name='autumnDay'>
+                     <option id='text' value='Yes' selected>Yes</option>
+                     <option id='text' value='No' >No</option>
+                   </p>
+                   </select>
+          </div> -->
+
+          <div id="thanksgiving">
+          <h2>Will you be on-campus during Thanksgiving Break (November 22nd-24th)?</h2>
+                 <p><select form_id='growl' id='thanksgiving' class='dropdown' name='thanksgiving'>
+                     <option id='text' value='Yes'>Yes</option>
+                     <option id='text' value='No' selected>No</option>
+                   </p>
+              </select>
+          </div>
+
+          <div id="moneyLeft">
+          <h2>How much money do you have left on your LION plan?</h2>
+               <input type="number" name="moneyLeft" id="moneyLeft" class="numInput" min="1" max="1793" step="0000.01"> $
+          </div>
+
+          <div id="pointsLeft">
+          <h2>How many community table<div id="comtom">*</div> points do you have left on your LION plan?</h2>
+               <input type="number" name="pointsLeft" id="pointsLeft" class="numInput" min="1" max="48"> $
+          </div>
+
+     </form>
+          <br>
+
+          <button type="submit" form="growl" class="button" formaction="/results">Submit</button>
+
+     </body>
+</html>

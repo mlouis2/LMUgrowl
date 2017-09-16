@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <link rel='stylesheet' href='/stylesheets/main.css'>
+     </head>
+
+     <body>
+          <h1><u>Results</u></h1>
+
+     <div id="results">
+          <h2>Current</h2>
+          <ul>
+               <li>You can spend roughly ${{ dollarsPerDay }} per day.</li>
+               <li>You can spend roughly ${{ dollarsPerMeal }} per meal.</li>
+               <li>You can use about {{ pointsPerWeek }} points per week.</li>
+          </ul>
+          <br>
+          <h2>Start of Semester</h2>
+          <ul>
+               <li>With the {{ plan }} plan, you had ${{ dollarsPerPlan }} and {{ pointsPerPlan }} points total.</li>
+               <li>You could spend ${{ planDollarsPerDay }} per day and ${{ planDollarsPerMeal }} per meal.</li>
+               <li>You could use about {{ planPointsPerWeek }} points per week.</li>
+          </ul>
+     </div>
+
+
+     </body>
+
+</html>
