@@ -19,15 +19,6 @@ import jinja2
 from google.appengine.api import urlfetch
 from datetime import datetime, date
 import datetime
-import jinja2
-import webapp2
-import os
-import json
-import urllib
-import urllib2
-import time
-from google.appengine.api import users
-from google.appengine.ext import ndb
 from decimal import *
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
@@ -38,6 +29,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render())
 
 class ResultsHandler(webapp2.RequestHandler):
+<<<<<<< HEAD
     # delete later
     def get(self):
         template = env.get_template('results.html')
