@@ -29,12 +29,9 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render())
 
 class ResultsHandler(webapp2.RequestHandler):
-<<<<<<< HEAD
-    # delete later
     def get(self):
         template = env.get_template('results.html')
         self.response.out.write(template.render())
-    # delete later
 
     def post(self):
 
