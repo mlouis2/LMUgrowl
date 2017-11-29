@@ -65,17 +65,6 @@ class ResultsHandler(webapp2.RequestHandler):
             dollarsPerDay = round(dollarsPerDay, 2)
             return dollarsPerDay
 
-        def getPointsPerWeek(days, points):
-            weeks = days / 7
-            pointsPerWeek = Decimal(points) / Decimal(weeks)
-            #Whole number if there's a minimum of one com tom per week
-            if pointsPerWeek > 1:
-                pointsPerWeek = int(points) / int(weeks)
-            #Decimal if less than one, so that it doesn't just say zero
-            else:
-                pointsPerWeek = round(pointsPerWeek, 1)
-            return pointsPerWeek
-
         def translatePlanToMoney(plan):
             if plan == 'L':
                 return 1792;
@@ -86,15 +75,9 @@ class ResultsHandler(webapp2.RequestHandler):
             if plan == 'N':
                 return 1500;
 
-        def translatePlanToPoints(plan):
-            if plan == 'L':
-                return 48;
-            if plan == 'I':
-                return 24;
-            if plan == 'O':
-                return 16;
-            if plan == 'N':
-                return 0;
+        def savedMoney(dollarsPerDay, planDollarsPerDay):
+            return dollarsPerDay > planDollarsPerDay;
+
 
         #String of L, I, O, or N
         plan = self.request.get('plan')
@@ -102,37 +85,35 @@ class ResultsHandler(webapp2.RequestHandler):
         thanksgiving = self.request.get('thanksgiving')
         #Number of how many dollars are left on LION account
         moneyLeft = self.request.get('moneyLeft')
-        #Number of how many points are left on LION account
-        pointsLeft = self.request.get('pointsLeft')
 
         totalDays = getTotalDays()
-        totalDays = checkThanksgiving(totalDays)
+        #totalDays = checkThanksgiving(totalDays)
 
         dollarsPerMeal = getDollarsPerMeal(totalDays, moneyLeft)
         dollarsPerDay = getDollarsPerDay(totalDays, moneyLeft)
 
-        pointsPerWeek = getPointsPerWeek(totalDays, pointsLeft)
-
         dollarsPerPlan = translatePlanToMoney(plan)
         planDollarsPerDay = getDollarsPerDay(getDaysOfSemester(), dollarsPerPlan)
         planDollarsPerMeal = getDollarsPerMeal(getDaysOfSemester(), dollarsPerPlan)
-        pointsPerPlan = translatePlanToPoints(plan)
-        planPointsPerWeek = getPointsPerWeek(getDaysOfSemester(), pointsPerPlan)
+
+        savedMoney = savedMoney(dollarsPerDay, planDollarsPerDay)
+
+        if (savedMoney):
+            savedMoneyAnswer = "HAVE"
+        else:
+            savedMoneyAnswer = "HAVE NOT"
 
         vars = {
             'plan': plan,
             'thanksgiving': thanksgiving,
             'moneyLeft': moneyLeft,
-            'pointsLeft': pointsLeft,
             'totalDays': totalDays,
             'dollarsPerMeal': dollarsPerMeal,
             'dollarsPerDay': dollarsPerDay,
-            'pointsPerWeek': pointsPerWeek,
             'dollarsPerPlan': dollarsPerPlan,
-            'pointsPerPlan': pointsPerPlan,
             'planDollarsPerDay': planDollarsPerDay,
             'planDollarsPerMeal': planDollarsPerMeal,
-            'planPointsPerWeek': planPointsPerWeek
+            'savedMoneyAnswer': savedMoneyAnswer,
         }
 
         self.response.out.write(template.render(vars))

@@ -6,23 +6,32 @@
      </head>
 
      <body>
-          <h1><u>Results</u></h1>
+          <header>Results</header>
 
      <div id="results">
-          <h2>Current</h2>
+          <h2 id="subtitle">You can spend roughly <span id="emphasis">${{ dollarsPerDay }}</span> per day.</h2>
+          <br>
+          <br>
+          <h2 id="subtitle">You <span id="emphasis">{{ savedMoneyAnswer }}</span> saved money since the start of the semester.</h2>
+          <br>
+          <br>
+          <h2 id="subtitle">At the start of the semester, you could spend <span id="emphasis">${{ planDollarsPerDay }}</span> per day.</h2>
+     </div>
+
+     <!-- <div id="results">
+          <h2 id='subtitle'>Current</h2>
           <ul>
                <li>You can spend roughly ${{ dollarsPerDay }} per day.</li>
                <li>You can spend roughly ${{ dollarsPerMeal }} per meal.</li>
-               <li>You can use about {{ pointsPerWeek }} points per week.</li>
           </ul>
           <br>
-          <h2>Start of Semester</h2>
+          <h2 id='subtitle'>Start of Semester</h2>
           <ul>
-               <li>With the {{ plan }} plan, you had ${{ dollarsPerPlan }} and {{ pointsPerPlan }} points total.</li>
-               <li>You could spend ${{ planDollarsPerDay }} per day and ${{ planDollarsPerMeal }} per meal.</li>
-               <li>You could use about {{ planPointsPerWeek }} points per week.</li>
+               <li>With the {{ plan }} plan, you started with ${{ dollarsPerPlan }}.</li>
+               <li>You could spend ${{ planDollarsPerDay }} per day.</li>
+               <li>You could spend ${{ planDollarsPerMeal }} per meal.</li>
           </ul>
-     </div>
+     </div> -->
 
 
      </body>
