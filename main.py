@@ -38,16 +38,21 @@ class ResultsHandler(webapp2.RequestHandler):
         template = env.get_template('results.html')
 
         def getDaysOfSemester():
-            firstDay = datetime.date(2017, 8, 28)
-            lastDay = datetime.date(2017, 12, 15)
+            firstDay = datetime.date(2018, 8, 27)
+            lastDay = datetime.date(2018, 12, 14)
             totalDays = lastDay - firstDay
             return totalDays.days
 
         def getTotalDays():
             todaysDate = datetime.date.today()
-            lastDay = datetime.date(2017, 12, 15)
+            lastDay = datetime.date(2018, 12, 14)
             totalDays = lastDay - todaysDate
             return totalDays.days
+
+        # def checkSpringBreak(days):
+        #     if springBreak == 'No':
+        #         days = days - 7
+        #     return days
 
         def checkThanksgiving(days):
             if thanksgiving == 'No':
@@ -67,27 +72,33 @@ class ResultsHandler(webapp2.RequestHandler):
 
         def translatePlanToMoney(plan):
             if plan == 'L':
-                return 1792;
+                return 1768;
             if plan == 'I':
-                return 1694;
+                return 1772;
             if plan == 'O':
-                return 1559;
+                return 1640;
             if plan == 'N':
-                return 1500;
+                return 1600;
 
         def savedMoney(dollarsPerDay, planDollarsPerDay):
-            return dollarsPerDay > planDollarsPerDay;
+            return dollarsPerDay >= planDollarsPerDay;
 
 
         #String of L, I, O, or N
         plan = self.request.get('plan')
+
         #String of 'Yes' or 'No' if user will be present on Thanksgiving break
         thanksgiving = self.request.get('thanksgiving')
+        #String of 'Yes' or 'No' if user will be present during Spring break
+        # springBreak = self.request.get('springBreak')
+
         #Number of how many dollars are left on LION account
         moneyLeft = self.request.get('moneyLeft')
 
         totalDays = getTotalDays()
-        #totalDays = checkThanksgiving(totalDays)
+
+        # totalDays = checkSpringBreak(totalDays)
+        totalDays = checkThanksgiving(totalDays)
 
         dollarsPerMeal = getDollarsPerMeal(totalDays, moneyLeft)
         dollarsPerDay = getDollarsPerDay(totalDays, moneyLeft)
@@ -105,6 +116,7 @@ class ResultsHandler(webapp2.RequestHandler):
 
         vars = {
             'plan': plan,
+            # 'springBreak': springBreak,
             'thanksgiving': thanksgiving,
             'moneyLeft': moneyLeft,
             'totalDays': totalDays,

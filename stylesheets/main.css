@@ -2,10 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
 
 body {
-     padding-left: 20px;
      font-family: 'Josefin Slab', Serif;
      height: 100%;
      margin: 0;
+}
+
+.wrapper {
+    padding-left: 20px;
 }
 
 form {
@@ -22,7 +25,7 @@ header {
      margin: -20px;
      color: white;
      box-shadow: 1px 2px 2px 2px rgba(132, 0, 21, .2);
-     padding: 30px;
+     padding: 10px;
      padding-top: 40px;
      text-align: center;
      display: block;
@@ -32,23 +35,23 @@ header {
 
 #mealPlan{
      position: relative;
-     padding-top: 50px;
+     padding-top: 10px;
      z-index: -10px;
 }
 
 h2 {
      color: #231f20;
-     font-size: 40px;
-     padding-top: 50px;
+     font-size: 30px;
+     padding-top: 30px;
      margin: 3px auto;
 }
 
 .dropdown {
      font-family: 'Josefin Slab', serif;
      color: white;
-     font-size: 50px;
+     font-size: 30px;
      width: 400px;
-     height: 70px;
+     height: 50px;
      background-color: rgb(5, 29, 53);
 }
 
@@ -93,22 +96,11 @@ p{
 }
 
 #footer{
+     font-size: 20px;
      position: fixed;
-  height: 50px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+     bottom: 0px;
+     padding: 20px;
      text-align: center;
-     z-index: 20px;
-     margin-top: 50px;
-          margin-left: -50px;
-          margin-right: -50px;
-          margin-bottom: -50px;
-          padding-top: 40px;
-          padding-right: 80px;
-          padding-left: 60px;
-          padding-bottom: 80px;
      color: white;
      background-color: rgb(132, 0, 21);
 }
@@ -191,5 +183,5 @@ p{
 
 .footer,
 .push {
-  height: 40px;
+  height: 200px;
 }
